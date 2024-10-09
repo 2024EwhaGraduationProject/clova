@@ -50,9 +50,12 @@ RUN apk update && apk add libpq tzdata
 RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 RUN apk update \
     && apk add --virtual build-deps gcc python3-dev musl-dev \
-    && apk add --no-cache jpeg-dev zlib-dev mariadb-dev
+    && apk add --no-cache jpeg-dev zlib-dev mariadb-dev \
+    && apk add --no-cache lapack-dev openblas-dev libxml2-dev libxslt-dev\
+    && apk add --no-cache libffi-dev build-base openssl-dev rust cargo
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
+RUN pip install --upgrade pip
 RUN pip install mysqlclient
 RUN pip install --no-cache /wheels/*
 RUN apk del build-deps
