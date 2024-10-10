@@ -58,11 +58,11 @@ COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 
 RUN pip install --upgrade pip
-RUN pip install --only-binary=:all: lxml numpy \
-    && pip install JPype1
+RUN pip install --only-binary=:all: lxml \
+    && pip install numpy JPype1
 RUN pip install mysqlclient
-
 RUN pip install /wheels/*
+
 RUN apk del build-deps
 
 # set timezone
