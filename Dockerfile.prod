@@ -56,9 +56,7 @@ RUN apk update \
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --upgrade pip
-RUN pip install mysqlclient 
-RUN pip install --only-binary=:all: lxml \
-    && pip install JPype1 numpy
+RUN pip install mysqlclient
 RUN pip install /wheels/*
 RUN apk del build-deps
 
