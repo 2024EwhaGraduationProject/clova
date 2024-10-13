@@ -19,6 +19,5 @@ Pillow
 tzdata
 google-cloud-translate
 konlpy
-numpy
 openai
 python-dotenv

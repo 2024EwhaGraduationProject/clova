@@ -2,43 +2,46 @@
 ###########
 
 # pull official base image
-FROM python:3.8-alpine as builder
+FROM python:3.8-slim-buster as builder
 
 # set work directory
 WORKDIR /usr/src/app
-
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# install psycopg2 dependencies
-RUN apt-get update && apt-get install python3 python3-dev mariadb-dev build-base libxml2-dev libxslt-dev && pip3 install mysqlclient
+# install build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    libxml2-dev \
+    libxslt1-dev \
+    zlib1g-dev \
+    libjpeg-dev \
+    libmariadb-dev \
+    && pip install mysqlclient \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# dependencies for pillow
-RUN apt-get install --no-cache jpeg-dev zlib-dev
-RUN apt-get install --no-cache --virtual .build-deps build-base linux-headers
-
+# update pip
 RUN pip install --upgrade pip
 
 # install dependencies
 COPY ./requirements.txt .
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
 
-
-
 #########
 # FINAL #
 #########
 
 # pull official base image
-FROM python:3.8-alpine
+FROM python:3.8-slim-buster
 
 # create directory for the app user
 RUN mkdir -p /home/app
 
 # create the app user
-RUN addgroup -S app && adduser -S app -G app
+RUN addgroup --system app && adduser --system --ingroup app app
 
 # create the appropriate directories
 ENV HOME=/home/app
@@ -48,23 +51,23 @@ RUN mkdir $APP_HOME/static
 RUN mkdir $APP_HOME/media
 WORKDIR $APP_HOME
 
-# install dependencies
-RUN apt-get update && apt-get install libpq tzdata
-RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
-RUN apt-get update \
-    && apt-get install --virtual build-deps gcc python3-dev musl-dev \
-    && apt-get install --no-cache jpeg-dev zlib-dev mariadb-dev \
-    && apt-get install --no-cache lapack-dev openblas-dev \
-    && apt-get install --no-cache libffi-dev build-base openssl-dev rust cargo
+# install runtime dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libpq5 \
+    tzdata \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
+# Set timezone
+RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+
+# copy over the built wheels and install them
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 
 RUN pip install --upgrade pip
 RUN pip install mysqlclient
 RUN pip install /wheels/*
-
-RUN apt-get purge -y --auto-remove build-essential gcc python3-dev
 
 # set timezone
 ENV TZ=Asia/Seoul
