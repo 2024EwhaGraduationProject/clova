@@ -43,3 +43,4 @@ clova-backend-pythonanywhere
 20241014 01:36 39차 actions 테스트 : final에서 wget pip 설치
 20241014 01:43 39차 actions 테스트 : final에서 lsb-release pip 설치
 20241014 01:44 40차 actions 테스트 : final에서 gnupg pip 설치
+20241014 01:47 41차 actions 테스트 : MySQL 레포지토리의 GPG 키 추가 코드 작성

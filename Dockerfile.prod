@@ -66,6 +66,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Set timezone
 RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
+# Add MySQL APT repository GPG key
+RUN wget -qO - https://repo.mysql.com/RPM-GPG-KEY-mysql | apt-key add -
+
 RUN cd /tmp && \
     wget https://dev.mysql.com/get/mysql-apt-config_0.8.20-1_all.deb && \
     dpkg -i mysql-apt-config_0.8.20-1_all.deb && \
