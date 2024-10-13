@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     zlib1g-dev \
     libjpeg-dev \
     libmariadb-dev \
+    && pip install --upgrade pip setuptools wheel \
     && pip install mysqlclient \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -54,7 +55,7 @@ RUN mkdir $APP_HOME/media
 WORKDIR $APP_HOME
 
 # install runtime dependencies
-RUN sudo apt install libmysqlclient-dev
+RUN apt-get install libmysqlclient-dev
 RUN apt-get update && apt-get install -y --no-install-recommends \
     pkg-config \
     libpq5 \
