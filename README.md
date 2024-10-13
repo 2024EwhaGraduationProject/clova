@@ -25,3 +25,4 @@ clova-backend-pythonanywhere
 20241014 00:04 21차 actions 테스트 : requirements.txt에 numpy 명시적으로 추가
 20241014 00:16 22차 actions 테스트 : alpine to slim-buster 변경
 20241014 00:23 23차 actions 테스트 : alpine to slim-buster 변경시 오류 발생가능한 패키지 삭제
+20241014 00:27 24차 actions 테스트 : mysqlclient 설치 위한 pkg-config 외의 패키지 다수 추가

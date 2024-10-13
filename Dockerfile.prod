@@ -13,9 +13,10 @@ ENV PYTHONUNBUFFERED 1
 
 # install build dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
+    build-essential pkg-config\
     libxml2-dev \
     libxslt1-dev \
+    libmysqlclient-dev mariadb-dev python3-dev \
     zlib1g-dev \
     libjpeg-dev \
     libmariadb-dev \
