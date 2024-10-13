@@ -63,18 +63,25 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN wget -qO - https://repo.mysql.com/RPM-GPG-KEY-mysql | apt-key add - \
+RUN wget -qO - https://repo.mysql.com/RPM-GPG-KEY-mysql | gpg --dearmor -o /etc/apt/trusted.gpg.d/mysql.gpg \
     && echo "deb http://repo.mysql.com/apt/debian/ buster mysql-8.0" > /etc/apt/sources.list.d/mysql.list \
     && echo "deb http://repo.mysql.com/apt/debian/ buster mysql-tools" >> /etc/apt/sources.list.d/mysql.list \
     && echo "deb-src http://repo.mysql.com/apt/debian/ buster mysql-8.0" >> /etc/apt/sources.list.d/mysql.list
+
+   # Add MySQL APT repository GPG key
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys B7B3B788A8D3785C && \
+    cd /tmp && \
+    wget https://dev.mysql.com/get/mysql-apt-config_0.8.20-1_all.deb && \
+    dpkg -i mysql-apt-config_0.8.20-1_all.deb && \
+    apt-get update && \
+    apt-get install -y libmysqlclient21 && \
+    rm mysql-apt-config_0.8.20-1_all.deb
 
 RUN apt-get update && apt-get install -y libmysqlclient-dev && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set timezone
 RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
-
-# Add MySQL APT repository GPG key
-
 
 # copy over the built wheels and install them
 COPY --from=builder /usr/src/app/wheels /wheel
