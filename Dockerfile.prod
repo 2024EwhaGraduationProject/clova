@@ -56,7 +56,7 @@ WORKDIR $APP_HOME
 
 # install runtime dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    mysql pkg-config \
+    pkg-config \
     libpq5 \
     tzdata \
     && apt-get clean \
