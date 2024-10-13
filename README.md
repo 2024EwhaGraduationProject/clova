@@ -7,7 +7,7 @@ clova-backend-pythonanywhere
 20241010 09:44 3차 actions 테스트
 
 20241010 09:47 5차 actions 테스트
-20241010 11:05 6차 actions 테스트
+20241010 11:05 6차 actions 테스트ㄴ
 20241010 11:30 7차 actions 테스트
 
 20241010 12:06 10차 actions 테스트
@@ -21,3 +21,5 @@ clova-backend-pythonanywhere
 20241013 23:30 17차 actions 테스트
 20241013 23:33 18차 actions 테스트
 20241013 23:45 19차 actions 테스트
+
+20241014 00:04 21차 actions 테스트 : requirements.txt에 numpy 명시적으로 추가
