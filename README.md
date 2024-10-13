@@ -41,3 +41,4 @@ clova-backend-pythonanywhere
 20241014 01:34 37차 actions 테스트 : final에서 mysql 설치 삭제
 20241014 01:36 38차 actions 테스트 : final에서 mysql 설치 location 명시
 20241014 01:36 39차 actions 테스트 : final에서 wget pip 설치
+20241014 01:43 39차 actions 테스트 : final에서 lsb-release pip 설치
