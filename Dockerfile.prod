@@ -82,7 +82,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys B7B3B788A8
 COPY --from=builder /usr/src/app/wheels /wheel
 COPY --from=builder /usr/src/app/requirements.txt .
 
-RUN pip install --upgrade pip setuptools wheels
+RUN pip install --upgrade pip setuptools wheel
 RUN pip install mysqlclient
 RUN pip install /wheels/*
 
