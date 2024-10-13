@@ -70,9 +70,10 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 RUN wget -qO - https://repo.mysql.com/RPM-GPG-KEY-mysql | gpg --dearmor -o /etc/apt/trusted.gpg.d/mysql.gpg
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN cd /tmp && \
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys B7B3B788A8D3785C && \
+    cd /tmp && \
     wget https://dev.mysql.com/get/mysql-apt-config_0.8.20-1_all.deb && \
-    dpkg -i mysql-apt-config_0.8.20-1_all.deb || true && \
+    dpkg -i mysql-apt-config_0.8.20-1_all.deb && \
     apt-get update && \
     apt-get install -y libmysqlclient21 && \
     rm mysql-apt-config_0.8.20-1_all.deb

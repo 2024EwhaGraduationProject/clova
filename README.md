@@ -45,3 +45,4 @@ clova-backend-pythonanywhere
 20241014 01:44 40차 actions 테스트 : final에서 gnupg pip 설치
 20241014 01:47 41차 actions 테스트 : MySQL 레포지토리의 GPG 키 추가 코드 작성
 20241014 01:49 42차 actions 테스트 : GPG 키 오류 해결 위한 코드 추가
+20241014 01:51 43차 actions 테스트 : 우분투에서 GPG 키 직접 가져오는 코드 추가
