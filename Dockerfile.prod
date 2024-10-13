@@ -65,15 +65,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Set timezone
 RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
+RUN cd /tmp && \
+    wget https://dev.mysql.com/get/mysql-apt-config_0.8.20-1_all.deb && \
+    dpkg -i mysql-apt-config_0.8.20-1_all.deb && \
+    apt-get update && \
+    apt-get install -y libmysqlclient21
+
 # copy over the built wheels and install them
 COPY --from=builder /usr/src/app/wheels /wheel
 COPY --from=builder /usr/src/app/requirements.txt .
 
-RUN pip install --upgrade pip setuptools wheel
-
-RUN apt-get update && apt-get install -y libmysqlclient21
+RUN pip install --upgrade pip setuptools wheels
 RUN pip install mysqlclient
-
 RUN pip install /wheels/*
 
 # set timezone
