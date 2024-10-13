@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     zlib1g-dev \
     libjpeg-dev \
     libmariadb-dev \
-    mysql-server \
+    default-libmysqlclient-dev \
     && pip install mysqlclient \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*

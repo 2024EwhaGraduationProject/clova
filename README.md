@@ -31,3 +31,4 @@ clova-backend-pythonanywhere
 20241014 00:46 27차 actions 테스트 : libmysqlclient15-dev로 다시 설치
 20241014 00:49 28차 actions 테스트 : libmysqlclient15-dev에 sudo 권한 추가
 20241014 00:51 29차 actions 테스트 : 앞선 패키지 대신 mysql-server 설치
+20241014 00:54 30차 actions 테스트 : default-libmysqlclient-dev로 재설치
