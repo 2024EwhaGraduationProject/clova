@@ -13,7 +13,8 @@ ENV PYTHONUNBUFFERED 1
 
 # install build dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential pkg-config\
+    build-essential \
+    pkg-config \
     libxml2-dev \
     libxslt1-dev \
     python3-dev \
@@ -54,6 +55,7 @@ WORKDIR $APP_HOME
 
 # install runtime dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    pkg-config \
     libpq5 \
     tzdata \
     && apt-get clean \
@@ -63,11 +65,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
 # copy over the built wheels and install them
-COPY --from=builder /usr/src/app/wheels /wheels
+COPY --from=builder /usr/src/app/wheels /wheel
 COPY --from=builder /usr/src/app/requirements.txt .
 
 RUN pip install --upgrade pip
-RUN pip install mysqlclient
+RUN pip install mysqlclient==2.1.1
 RUN pip install /wheels/*
 
 # set timezone

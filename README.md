@@ -27,3 +27,4 @@ clova-backend-pythonanywhere
 20241014 00:23 23차 actions 테스트 : alpine to slim-buster 변경시 오류 발생가능한 패키지 삭제
 20241014 00:27 24차 actions 테스트 : mysqlclient 설치 위한 pkg-config 외의 패키지 다수 추가
 20241014 00:29 25차 actions 테스트 : 오류 일으키는 패키지 삭제 libmysqlclient-dev
+20241014 00:40 26차 actions 테스트 : mysqlclient==2.1.1로 downgrading
