@@ -13,11 +13,11 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # install psycopg2 dependencies
-RUN apk update && apk add python3 python3-dev mariadb-dev build-base libxml2-dev libxslt-dev && pip3 install mysqlclient
+RUN apt-get update && apt-get install python3 python3-dev mariadb-dev build-base libxml2-dev libxslt-dev && pip3 install mysqlclient
 
 # dependencies for pillow
-RUN apk add --no-cache jpeg-dev zlib-dev
-RUN apk add --no-cache --virtual .build-deps build-base linux-headers
+RUN apt-get install --no-cache jpeg-dev zlib-dev
+RUN apt-get install --no-cache --virtual .build-deps build-base linux-headers
 
 RUN pip install --upgrade pip
 
@@ -49,13 +49,13 @@ RUN mkdir $APP_HOME/media
 WORKDIR $APP_HOME
 
 # install dependencies
-RUN apk update && apk add libpq tzdata
+RUN apt-get update && apt-get install libpq tzdata
 RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
-RUN apk update \
-    && apk add --virtual build-deps gcc python3-dev musl-dev \
-    && apk add --no-cache jpeg-dev zlib-dev mariadb-dev \
-    && apk add --no-cache lapack-dev openblas-dev \
-    && apk add --no-cache libffi-dev build-base openssl-dev rust cargo
+RUN apt-get update \
+    && apt-get install --virtual build-deps gcc python3-dev musl-dev \
+    && apt-get install --no-cache jpeg-dev zlib-dev mariadb-dev \
+    && apt-get install --no-cache lapack-dev openblas-dev \
+    && apt-get install --no-cache libffi-dev build-base openssl-dev rust cargo
 
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
@@ -64,7 +64,7 @@ RUN pip install --upgrade pip
 RUN pip install mysqlclient
 RUN pip install /wheels/*
 
-RUN apk del build-deps
+RUN apt-get purge -y --auto-remove build-essential gcc python3-dev
 
 # set timezone
 ENV TZ=Asia/Seoul

@@ -23,3 +23,4 @@ clova-backend-pythonanywhere
 20241013 23:45 19차 actions 테스트
 
 20241014 00:04 21차 actions 테스트 : requirements.txt에 numpy 명시적으로 추가
+20241014 00:16 22차 actions 테스트 : alpine to slim-buster 변경
