@@ -59,8 +59,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     pkg-config \
     libpq5 \
     tzdata \
-    wget \
-    lsb-release \
+    wget gnupg lsb-release \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
