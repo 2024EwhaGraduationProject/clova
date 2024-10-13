@@ -55,7 +55,6 @@ RUN mkdir $APP_HOME/media
 WORKDIR $APP_HOME
 
 # install runtime dependencies
-RUN apt-get install default-libmysqlclient-dev
 RUN apt-get update && apt-get install -y --no-install-recommends \
     mysql pkg-config \
     libpq5 \
@@ -71,7 +70,10 @@ COPY --from=builder /usr/src/app/wheels /wheel
 COPY --from=builder /usr/src/app/requirements.txt .
 
 RUN pip install --upgrade pip setuptools wheel
+
+RUN apt-get update && apt-get install -y libmysqlclient21
 RUN pip install mysqlclient
+
 RUN pip install /wheels/*
 
 # set timezone
