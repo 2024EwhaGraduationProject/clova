@@ -36,3 +36,4 @@ clova-backend-pythonanywhere
 20241014 01:12 32차 actions 테스트 : libmysqlclient-dev 재삭제 
 20241014 01:17 33차 actions 테스트 : final의 libmysqlclient-dev 앞 sudo 삭제
 20241014 01:20 34차 actions 테스트 : final의 libmysqlclient-dev 삭제
+20241014 01:25 35차 actions 테스트 : final에서 default-libmysqlclient-dev로 수정, mysql 설치 추가

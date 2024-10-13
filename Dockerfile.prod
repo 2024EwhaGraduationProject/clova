@@ -55,9 +55,9 @@ RUN mkdir $APP_HOME/media
 WORKDIR $APP_HOME
 
 # install runtime dependencies
-# RUN apt-get install libmysqlclient-dev
+RUN apt-get install default-libmysqlclient-dev
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    pkg-config \
+    mysql pkg-config \
     libpq5 \
     tzdata \
     && apt-get clean \
