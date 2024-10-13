@@ -47,3 +47,4 @@ clova-backend-pythonanywhere
 20241014 01:49 42차 actions 테스트 : GPG 키 오류 해결 위한 코드 추가
 20241014 01:51 43차 actions 테스트 : 우분투에서 GPG 키 직접 가져오는 코드 추가
 20241014 01:53 44차 actions 테스트 : wheels 에서 wheel로 패키지명 수정
+20241014 01:58 45차 actions 테스트 : libmysqlclient-dev 설치 오류 해결 위해 임의로 저장소 추가
