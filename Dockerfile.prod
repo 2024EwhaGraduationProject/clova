@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     zlib1g-dev \
     libjpeg-dev \
     libmariadb-dev \
-    default-libmysqlclient-dev \
+    libmysqlclient-dev mariadb-dev \
     && pip install mysqlclient \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -55,6 +55,7 @@ RUN mkdir $APP_HOME/media
 WORKDIR $APP_HOME
 
 # install runtime dependencies
+RUN sudo apt install libmysqlclient-dev
 RUN apt-get update && apt-get install -y --no-install-recommends \
     pkg-config \
     libpq5 \
@@ -69,8 +70,8 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 COPY --from=builder /usr/src/app/wheels /wheel
 COPY --from=builder /usr/src/app/requirements.txt .
 
-RUN pip install --upgrade pip
-RUN pip install mysqlclient==2.1.1
+RUN pip install --upgrade pip setuptools wheel
+RUN pip install mysqlclient
 RUN pip install /wheels/*
 
 # set timezone
