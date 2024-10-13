@@ -22,6 +22,8 @@ RUN apk add --no-cache --virtual .build-deps build-base linux-headers
 # install dependencies
 COPY ./requirements.txt .
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
+RUN pip install --no-cache-dir --only-binary=:all: lxml \
+    && pip install --no-cache-dir numpy JPype1 --root-user-action=ignore
 
 
 #########
@@ -58,8 +60,6 @@ COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 
 RUN pip install --upgrade pip
-RUN pip install --no-cache-dir --only-binary=:all: lxml \
-    && pip install numpy JPype1
 RUN pip install mysqlclient
 RUN pip install /wheels/*
 
