@@ -7,7 +7,7 @@ clova-backend-pythonanywhere
 <br> 20241010 09:44 3차 actions 테스트
 
 <br> 20241010 09:47 5차 actions 테스트
-<br> 20241010 11:05 6차 actions 테스트ㄴ
+<br> 20241010 11:05 6차 actions 테스트
 <br> 20241010 11:30 7차 actions 테스트
 
 <br> 20241010 12:06 10차 actions 테스트
@@ -60,4 +60,3 @@ clova-backend-pythonanywhere
 <br> 20241014 13:48 54차 actions 테스트 : .env.prod 필요한 내용 추가
 
 <br> 20241014 14:06 55차 actions 테스트 : migrations 및 모델 수정
-<br> 20241014 14:06 56차 actions 테스트 : 
