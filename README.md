@@ -49,3 +49,5 @@ clova-backend-pythonanywhere
 20241014 01:53 44차 actions 테스트 : wheels 에서 wheel로 패키지명 수정
 20241014 01:58 45차 actions 테스트 : libmysqlclient-dev 설치 오류 해결 위해 임의로 저장소 추가
 20241014 02:00 46차 actions 테스트 : GPG 키 오류 해결 위해 44차 테스트 코드로 복귀
+
+20241014 12:52 47차 actions 테스트 : apt update 추가 + pkg-config 설치 위치 변경
