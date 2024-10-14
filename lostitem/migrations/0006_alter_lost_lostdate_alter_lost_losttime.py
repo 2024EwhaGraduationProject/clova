@@ -13,11 +13,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='lost',
             name='lostdate',
-            field=models.TextField(blank=True, null=True),
+            field=models.CharField(blank=True, null=True, max_length=255),
         ),
         migrations.AlterField(
             model_name='lost',
             name='losttime',
-            field=models.TextField(blank=True, null=True),
+            field=models.CharField(blank=True, null=True, max_length=255),
         ),
     ]

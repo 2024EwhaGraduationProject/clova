@@ -13,11 +13,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='pointshop',
             name='shop',
-            field=models.TextField(blank=True, null=True, unique=True),
+            field=models.CharField(blank=True, null=True, max_length=255),
         ),
         migrations.AlterField(
             model_name='pointshop',
             name='stuff',
-            field=models.TextField(blank=True, null=True, unique=True),
+            field=models.CharField(unique=True, blank=True, null=True, max_length=255),
         ),
     ]

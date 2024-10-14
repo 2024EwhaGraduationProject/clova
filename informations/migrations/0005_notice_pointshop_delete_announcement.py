@@ -15,16 +15,16 @@ class Migration(migrations.Migration):
             name='Notice',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.TextField(unique=True)),
+                ('title', models.CharField(blank=True, null=True, max_length=255)),
                 ('noticeDate', models.DateTimeField(default=django.utils.timezone.now)),
-                ('contents', models.TextField(unique=True)),
+                ('contents', models.CharField(blank=True, null=True, max_length=255)),
             ],
         ),
         migrations.CreateModel(
             name='PointShop',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('stuff', models.TextField(blank=True, null=True)),
+                ('stuff', models.CharField(blank=True, null=True, max_length=255)),
                 ('price', models.IntegerField(blank=True, null=True)),
                 ('soldout', models.BooleanField(default=False)),
             ],

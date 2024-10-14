@@ -13,16 +13,16 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='lost',
             name='category',
-            field=models.TextField(blank=True, null=True),
+            field=models.CharField(blank=True, null=True, max_length=255),
         ),
         migrations.AlterField(
             model_name='lost',
             name='getwhere',
-            field=models.TextField(blank=True, null=True),
+            field=models.CharField(blank=True, null=True, max_length=255),
         ),
         migrations.AlterField(
             model_name='lost',
             name='nowwhere',
-            field=models.TextField(blank=True, null=True),
+            field=models.CharField(blank=True, null=True, max_length=255),
         ),
     ]

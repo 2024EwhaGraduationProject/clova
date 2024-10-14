@@ -18,11 +18,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='lost',
             name='getwhere',
-            field=models.CharField(blank=True, max_length=200, null=True),
+            field=models.CharField(blank=True, null=True, max_length=255),
         ),
         migrations.AlterField(
             model_name='lost',
             name='nowwhere',
-            field=models.CharField(blank=True, max_length=200, null=True),
+            field=models.CharField(blank=True, null=True, max_length=255),
         ),
     ]

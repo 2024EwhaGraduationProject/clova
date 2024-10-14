@@ -3,16 +3,16 @@ from django.utils import timezone
 
 # Create your models here.
 class Notice(models.Model):
-    title = models.TextField(unique=True)
+    title = models.CharField(blank=True, null=True, max_length=255)
     noticeDate = models.DateTimeField(default=timezone.now)
-    contents = models.TextField(unique=True)
+    contents = models.CharField(blank=True, null=True, max_length=255)
 
     def __str__(self):
         return self.title
     
 class PointShop(models.Model):
-    stuff = models.TextField(unique=True, blank=True, null=True)
-    shop = models.TextField(blank=True, null=True)
+    stuff = models.CharField(unique=True, blank=True, null=True, max_length=255)
+    shop = models.CharField(blank=True, null=True, max_length=255)
     price = models.IntegerField(blank=True, null=True)
     soldout = models.BooleanField(default=False)
 
