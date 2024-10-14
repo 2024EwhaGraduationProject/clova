@@ -57,3 +57,4 @@ clova-backend-pythonanywhere
 <br> 20241014 13:08 51차 actions 테스트 : -virtual 옵션 오류나서 삭제
 <br> 20241014 13:12 52차 actions 테스트 : --no-cache 옵션 오류나서 삭제
 <br> 20241014 13:21 53차 actions 테스트 : 49차 테스트 코드로 복귀 + wheels 폴더 이름명 변경
+<br> 20241014 13:48 54차 actions 테스트 : .env.prod 필요한 내용 추가
