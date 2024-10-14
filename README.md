@@ -53,3 +53,4 @@ clova-backend-pythonanywhere
 20241014 12:52 47차 actions 테스트 : apt update 추가 + pkg-config 설치 위치 변경
 20241014 12:55 48차 actions 테스트 : apt update 앞에 && 없던 오류 수정
 20241014 12:55 49차 actions 테스트 : gcc install 추가
+20241014 13:05 50차 actions 테스트 : wheels 폴더 이름명 변경 (오류)

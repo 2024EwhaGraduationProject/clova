@@ -77,17 +77,18 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys B7B3B788A8
     apt-get install -y libmysqlclient21 && \
     rm mysql-apt-config_0.8.20-1_all.deb
 
-
 RUN apt-get update \
     && apt update \
-    && apt-get install -y default-libmysqlclient-dev pkg-config gcc \
+    && apt-get install --virtual build-deps gcc python3-dev musl-dev \
+    && apt-get install --no-cache jpeg-dev zlib-dev mariadb-dev \
+    && apt-get install -y default-libmysqlclient-dev pkg-config \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set timezone
 RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
 # copy over the built wheels and install them
-COPY --from=builder /usr/src/app/wheels /wheel
+COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 
 RUN pip install --upgrade pip setuptools wheel
