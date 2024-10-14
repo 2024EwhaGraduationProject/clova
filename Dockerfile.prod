@@ -79,9 +79,9 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys B7B3B788A8
 
 RUN apt-get update \
     && apt update \
-    && apt-get install --virtual build-deps gcc python3-dev musl-dev \
     && apt-get install --no-cache jpeg-dev zlib-dev mariadb-dev \
     && apt-get install -y default-libmysqlclient-dev pkg-config \
+        gcc build-deps python3-dev musl-dev\
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set timezone
