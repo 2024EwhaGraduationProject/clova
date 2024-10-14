@@ -84,38 +84,46 @@ class LostSearchView(views.APIView):
     #permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwars):
-        import pandas as pd
+        try:
+            import pandas as pd
 
-        lostdate = request.data.get('lostdate')
-        losttime1 = request.data.get('losttime1')
-        losttime2 = request.data.get('losttime2')
-        getwhere = request.data.get('getwhere')
-        description = request.data.get('description')
+            lostdate = request.data.get('lostdate')
+            losttime1 = request.data.get('losttime1')
+            losttime2 = request.data.get('losttime2')
+            getwhere = request.data.get('getwhere')
+            description = request.data.get('description')
 
-        lostitems = Lost.objects.all()
+            lostitems = Lost.objects.all()
 
-        if getwhere:
-            lostitems = lostitems.filter(getwhere__icontains=getwhere)
+            if getwhere:
+                lostitems = lostitems.filter(getwhere__icontains=getwhere)
 
-        if losttime1 and losttime2:
-            lostitems = lostitems.filter(losttime__range=[losttime1, losttime2])
+            if losttime1 and losttime2:
+                lostitems = lostitems.filter(losttime__range=[losttime1, losttime2])
 
-        if lostdate:
-            lostitems = lostitems.filter(lostdate=lostdate)
+            if lostdate:
+                lostitems = lostitems.filter(lostdate=lostdate)
 
-        if not lostitems.exists():
-            return Response({'message': '검색결과가 없습니다.'}, status=status.HTTP_404_NOT_FOUND)
+            if not lostitems.exists():
+                return Response({'message': '검색결과가 없습니다.'}, status=status.HTTP_404_NOT_FOUND)
 
-        lostitemSerializers = LostSerializer(lostitems, many=True)
-        #df = pd.DataFrame(lostitemSerializers.data)
-        #df = df[['lostid', 'description', "category"]]
-        #idx = find(df, description)
-        filtered_data = [ { 'lostid': item['lostid'], 'description': item['description'], 'category': item['category'] } for item in lostitemSerializers.data]
-        idx = find(filtered_data, description)
-        
+            lostitemSerializers = LostSerializer(lostitems, many=True)
 
-        lostitems = lostitems.filter(id__in=idx)
-        lostitemsOrdered = sorted(lostitems, key=lambda x: idx.index(x.id))
-        lostitemSerializers = LostlistSerializer(lostitemsOrdered, many=True)
+            filtered_data = [
+                {'lostid': item['lostid'], 'description': item['description'], 'category': item['category']}
+                for item in lostitemSerializers.data
+            ]
+            
+            try:
+                idx = find(filtered_data, description)
+            except Exception as e:
+                return Response({'message': f'검색 과정에서 오류가 발생했습니다. 재시도 해주세요.: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        return Response({'message': 'Lostitem 검색 성공', 'data': lostitemSerializers.data}, status=status.HTTP_200_OK)
+            lostitems = lostitems.filter(id__in=idx)
+            lostitemsOrdered = sorted(lostitems, key=lambda x: idx.index(x.id))
+            lostitemSerializers = LostlistSerializer(lostitemsOrdered, many=True)
+
+            return Response({'message': 'Lostitem 검색 성공', 'data': lostitemSerializers.data}, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            return Response({'message': f'서버 오류 발생: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
