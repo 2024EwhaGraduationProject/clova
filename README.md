@@ -51,3 +51,4 @@ clova-backend-pythonanywhere
 20241014 02:00 46차 actions 테스트 : GPG 키 오류 해결 위해 44차 테스트 코드로 복귀
 
 20241014 12:52 47차 actions 테스트 : apt update 추가 + pkg-config 설치 위치 변경
+20241014 12:55 48차 actions 테스트 : apt update 앞에 && 없던 오류 수정
