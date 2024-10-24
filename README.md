@@ -69,3 +69,4 @@ clova-backend-pythonanywhere
 <br> 20241024 21:34 6차 nginx 연결 오류 : proxy_read_timeout 300 추가 (5분)
 <br> 20241024 21:39 7차 nginx 연결 오류 : proxy 버퍼 사이즈 추가
 <br> 20241024 21:45 8차 nginx 연결 오류 : proxy 응답 시간 관련 수정
+<br> 20241024 22:28 9차 nginx 연결 오류 : gunicorn 타임아웃 조정

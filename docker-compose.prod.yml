@@ -6,7 +6,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.prod
-    command: gunicorn clova.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn --timeout 120 clova.wsgi:application --bind 0.0.0.0:8000
     environment:
       DJANGO_SETTINGS_MODULE: clova.settings.prod 
     env_file:
