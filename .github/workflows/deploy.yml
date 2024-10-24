@@ -24,10 +24,12 @@ jobs:
         echo "${{ secrets.ENV_VARS }}" >> .env
     
     - name: create json file
-      run: |
-        touch .extended-medium-423214-k4-3cd01a759605.json
-        echo "${{ secrets.CHATGPT }}" >> .extended-medium-423214-k4-3cd01a759605.json
-  
+      uses: jsdaniell/create-json@v1.2.2
+      with:
+        name: "extended-medium-423214-k4-3cd01a759605.json"
+        json: ${{ secrets.CHATGPT }}
+        dir: './lostitem/'
+
     - name: create remote directory
       uses: appleboy/ssh-action@v0.1.4
       with:
