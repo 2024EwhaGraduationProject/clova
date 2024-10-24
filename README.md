@@ -67,3 +67,4 @@ clova-backend-pythonanywhere
 <br> 20241024 17:33 4차 ChatGPT -.json 테스트 : .json 경로 루트디렉토리
 <br> 20241024 20:59 5차 ChatGPT -.json 테스트 : sklearn 설치 
 <br> 20241024 21:34 6차 nginx 연결 오류 : proxy_read_timeout 300 추가 (5분)
+<br> 20241024 21:39 7차 nginx 연결 오류 : proxy 버퍼 사이즈 추가
