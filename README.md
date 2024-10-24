@@ -64,3 +64,4 @@ clova-backend-pythonanywhere
 <br> 20241024 17:10 1차 ChatGPT -.json 테스트 : GPT_find.py 경로 수정
 <br> 20241024 17:17 2차 ChatGPT -.json 테스트 : .json 경로 .env와 동일하게 수정
 <br> 20241024 17:23 3차 ChatGPT -.json 테스트 : .json 경로 원래 위치대로 수정 / deploy.yml 수정
+<br> 20241024 17:33 4차 ChatGPT -.json 테스트 : .json 경로 루트디렉토리
