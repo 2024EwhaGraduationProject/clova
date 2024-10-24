@@ -25,8 +25,8 @@ jobs:
     
     - name: create json file
       run: |
-        touch ./lostitem/extended-medium-423214-k4-3cd01a759605.json
-        echo "${{ secrets.CHATGPT }}" >> ./lostitem/extended-medium-423214-k4-3cd01a759605.json
+        touch .extended-medium-423214-k4-3cd01a759605.json
+        echo "${{ secrets.CHATGPT }}" >> .extended-medium-423214-k4-3cd01a759605.json
   
     - name: create remote directory
       uses: appleboy/ssh-action@v0.1.4

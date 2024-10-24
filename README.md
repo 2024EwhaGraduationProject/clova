@@ -62,3 +62,4 @@ clova-backend-pythonanywhere
 <br> 20241014 14:06 55차 actions 테스트 : migrations 및 모델 수정
 
 <br> 20241024 17:10 1차 ChatGPT -.json 테스트 : GPT_find.py 경로 수정
+<br> 20241024 17:17 2차 ChatGPT -.json 테스트 : .json 경로 .env와 동일하게 수정

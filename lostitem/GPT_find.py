@@ -1,6 +1,8 @@
 def eng_to_kor(text):
   import os
-  os.environ['GOOGLE_APPLICATION_CREDENTIALS']='extended-medium-423214-k4-3cd01a759605.json' 
+
+  json_file_path = os.path.join(os.getcwd(), 'extended-medium-423214-k4-3cd01a759605.json')
+  os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = json_file_path
   
   from google.cloud import translate_v2 as translate
   translate_client = translate.Client()
