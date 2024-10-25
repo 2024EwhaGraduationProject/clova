@@ -21,7 +21,7 @@ class LostlistSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lost
-        fields = ['lostid', 'image', 'title', 'category', 'getwhere', 'lostdate', 'losttime']
+        fields = ['lostid', 'image', 'title', 'category', 'getwhere', 'nowwhere', 'lostdate', 'losttime']
 
 # class LostImageUploadSerializer(serializers.ModelSerializer):
 #     # image = serializers.ImageField()
