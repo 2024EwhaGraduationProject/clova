@@ -98,6 +98,9 @@ CORS_ALLOW_HEADERS = [
 ]
 
 ROOT_URLCONF = 'clova.urls'
+CSRF_TRUSTED_ORIGINS = ['https://clova.site','https://www.clova.site','https://api.clova.site']
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 TEMPLATES = [
     {
